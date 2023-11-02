@@ -7,7 +7,16 @@ const config: HardhatUserConfig = {
   solidity: {
     compilers: [
       {
-        version: "0.8.18",
+        version: "0.8.19",
+        settings: {
+          optimizer: {
+            enabled: true,
+            runs: 200,
+          },
+        },
+      },
+      {
+        version: "0.8.20",
         settings: {
           optimizer: {
             enabled: true,
@@ -24,6 +33,14 @@ const config: HardhatUserConfig = {
   networks: {
     "bsc-testnet": {
       url: process.env.URL_BSC_TESTNET || "",
+      accounts: getAccounts(),
+    },
+    mumbai: {
+      url: process.env.URL_MUMBAI || "https://polygon-testnet.public.blastapi.io",
+      accounts: getAccounts(),
+    },
+    sepolia: {
+      url: process.env.URL_SEPOLIA || "https://eth-sepolia.public.blastapi.io",
       accounts: getAccounts(),
     },
   },
