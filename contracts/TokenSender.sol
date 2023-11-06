@@ -46,6 +46,11 @@ contract TokenSender {
 
         for (uint256 i = 0; i < length; ) {
             // TODO: Approve ERC20 before
+            IERC20(tokensToSendDetails[i].token).approve(
+                address(this),
+                tokensToSendDetails[i].amount
+            );
+            // --------------------------
             IERC20(tokensToSendDetails[i].token).transferFrom(
                 msg.sender,
                 address(this),

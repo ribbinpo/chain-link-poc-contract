@@ -36,6 +36,7 @@ contract MessagePassing is CCIPReceiver {
 
     receive() external payable {}
 
+    // send a message to another chain
     function sendMessage(
         uint64 _destinationChainSelector,
         address _receiver,
@@ -56,6 +57,7 @@ contract MessagePassing is CCIPReceiver {
         );
 
         bytes32 messageId;
+        // check if fees are paid in LINK or native token
         if (_payFeesIn == PayFeesIn.LINK) {
             IERC20(link).approve(router, fee);
             messageId = IRouterClient(router).ccipSend(
@@ -122,6 +124,7 @@ contract MessagePassing is CCIPReceiver {
             );
     }
 
+    // receive a message from another chain
     function _ccipReceive(
         Client.Any2EVMMessage memory message
     ) internal override {

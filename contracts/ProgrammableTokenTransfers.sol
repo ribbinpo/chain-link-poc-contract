@@ -44,6 +44,7 @@ contract ProgrammableTokenTransfers is CCIPReceiver, OwnerIsCreator {
 
     constructor(address router_) CCIPReceiver(router_) {}
 
+    // send message to another chain with token
     function sendMessage(
         uint64 _destinationChainSelector,
         address _receiver,
@@ -127,6 +128,7 @@ contract ProgrammableTokenTransfers is CCIPReceiver, OwnerIsCreator {
 
     receive() external payable {}
 
+    // Withdraw native balance.
     function withdraw(address beneficiary) public onlyOwner {
         // Retrieve the balance of this contract
         uint256 amount = address(this).balance;
@@ -141,6 +143,7 @@ contract ProgrammableTokenTransfers is CCIPReceiver, OwnerIsCreator {
         if (!sent) revert FailedToWithdrawEth(msg.sender, beneficiary, amount);
     }
 
+    // Withdraw token balance.
     function withdrawToken(
         address beneficiary,
         address token
