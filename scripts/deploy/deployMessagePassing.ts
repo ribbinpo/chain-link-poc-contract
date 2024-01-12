@@ -5,7 +5,7 @@ import { getAddressList, setAddress } from "../../utils/address.util";
 export async function deployMessagePassing() {
   const [owner] = await ethers.getSigners();
 
-  const addressList = getAddressList(hre.network.name);
+  const addressList = getAddressList();
   console.log(addressList.Link);
 
   const MessagePassing = await ethers.getContractFactory(

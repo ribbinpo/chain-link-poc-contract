@@ -7,7 +7,7 @@ export async function sendMessage() {
   const [owner] = await ethers.getSigners();
 
   const sourceChain = "mumbai";
-  const destChain = "sepolia";
+  const destChain = "mumbai";
 
   const addressList = getAddressList(hre.network.name);
   const addressListSepolia = getAddressList(destChain);
@@ -25,7 +25,7 @@ export async function sendMessage() {
   const res = await MessagePassing.sendMessage(
     CHAIN_SELECTOR[destChain],
     addressListSepolia.messagePassing,
-    "Bro!!",
+    "Hello Bro!!",
     1
   );
 

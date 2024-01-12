@@ -5,7 +5,7 @@ import { getAddressList, setAddress } from "../../utils/address.util";
 export async function deployProgrammableTokenTransfers() {
   const [owner] = await ethers.getSigners();
 
-  const addressList = getAddressList(hre.network.name);
+  const addressList = getAddressList();
 
   const ProgrammableTokenTransfers = await ethers.getContractFactory(
     "ProgrammableTokenTransfers",

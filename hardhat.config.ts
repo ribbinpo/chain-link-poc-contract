@@ -32,7 +32,7 @@ const config: HardhatUserConfig = {
   },
   networks: {
     "bsc-testnet": {
-      url: process.env.URL_BSC_TESTNET || "",
+      url: process.env.URL_BSC_TESTNET || "https://data-seed-prebsc-1-s1.bnbchain.org:8545",
       accounts: getAccounts(),
     },
     mumbai: {
